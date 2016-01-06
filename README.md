@@ -1,2 +1,2 @@
-Top Deals Today
 # topdeals-cli-gem
+Top Deals Today
