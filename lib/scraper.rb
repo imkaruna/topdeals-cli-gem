@@ -1,3 +1,4 @@
+#Scraper class fetches and parses data using Nokogiri gem
 require 'open-uri'
 require 'nokogiri'
 
@@ -5,7 +6,7 @@ class Scraper
 
   def self.scrape_index_page(deals_url)
     html = Nokogiri::HTML(open(deals_url).read)
-    deals = []
+    deals = [] #array to store the deal hashes after parsing
     html.css(".col-xs-8").each do |offer|
       deal = {
         :offername => offer.css("header a").text,
@@ -18,8 +19,5 @@ class Scraper
     end
     deals
   end
-
-
-
 
 end
