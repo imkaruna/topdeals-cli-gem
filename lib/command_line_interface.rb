@@ -19,23 +19,19 @@ class CommandLineInterface
   end
 
   def display_all_deals
-    index = 0
     puts "===============             TODAY's DEALS         ================="
-    while index <= 21 do
-      Deal.all.each do |deal|
-        index+=1
-        if index < 21
-        print "#{index}.   "
-        puts "#{deal.offername} - by #{deal.seller}"
-      end
-      end
-      puts "    _________________________________________________________________"
-      puts "                        COMMANDS                                "
-      puts "    - Type deal index number for details      "
-      puts "    - Type 'all' to list all deals"
-      puts "    - Type 'exit' to end"
-      puts "    _________________________________________________________________"
+
+    Deal.all[0..19].each.with_index(1) do |deal, i|
+      print "#{i}.   "
+      puts "#{deal.offername} - by #{deal.seller}"
     end
+
+    puts "    _________________________________________________________________"
+    puts "                        COMMANDS                                "
+    puts "    - Type deal index number for details      "
+    puts "    - Type 'all' to list all deals"
+    puts "    - Type 'exit' to end"
+    puts "    _________________________________________________________________"
   end
 
     def input_loop
@@ -54,7 +50,7 @@ class CommandLineInterface
         puts "    - Type 'all' to list all deals"
         puts "    - Type 'exit' to end"
         puts "    _________________________________________________________________"
-    
+
       elsif deal_input == 'exit'
         puts "Thank you! "
         puts "Exiting..."
@@ -65,7 +61,7 @@ class CommandLineInterface
   end
 
   def display_deal_details(input)
-    Deal.deal_details(input)
+    Deal.find(input).print_details
   end
 
 end

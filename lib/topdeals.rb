@@ -14,19 +14,33 @@ class Deal
     deals_array.each { |deal| Deal.new(deal) }
   end
 
-  def self.deal_details(deal_index)
-    deal_index = deal_index.to_i - 1
-    deal_info = @@all[deal_index].details
-    puts "DEAL    : #{@@all[deal_index].offername}"
-    puts "SELLER  : #{@@all[deal_index].seller}"
-    puts "DETAILS : #{deal_info}"
-    puts "VALUE   : #{@@all[deal_index].value.strip}"
-    puts "--------------------------------------------------------"
 
-  end
+  #
+  # def self.deal_details(deal_index)
+  #   deal_index = deal_index.to_i - 1
+  #   deal_info = @@all[deal_index].details
+  #   puts "DEAL    : #{@@all[deal_index].offername}"
+  #   puts "SELLER  : #{@@all[deal_index].seller}"
+  #   puts "DETAILS : #{deal_info}"
+  #   puts "VALUE   : #{@@all[deal_index].value.strip}"
+  #   puts "--------------------------------------------------------"
+  #
+  # end
 
   def self.all
     @@all
+  end
+
+  def print_details
+    puts "DEAL    : #{self.offername}"
+    puts "SELLER  : #{self.seller}"
+    puts "DETAILS : #{self.details}"
+    puts "VALUE   : #{self.value.strip}"
+    puts "--------------------------------------------------------"
+  end
+
+  def self.find(input)
+    @@all[input.to_i-1]
   end
 
 end
