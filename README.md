@@ -1,2 +1,3 @@
-# topdeals-cli-gem
-Top Deals Today
+#  Top Deals Today
+
+A Ruby CLI Gem to fetch deals from the internet.
